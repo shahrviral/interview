@@ -8,8 +8,9 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self, head=None):
-        self.head = head
+    def __init__(self):
+        self.head = None
+        self.length = 0
 
     def is_empty(self):
         """Return if LinkedList is empty or not O(1)"""
@@ -19,6 +20,7 @@ class LinkedList:
         """Add node to beginning of LinkedList O(1)"""
         node = Node(data, self.head)
         self.head = node
+        self.length += 1
 
     def size(self):
         """Return size of LinkedList O(N)"""
@@ -28,6 +30,10 @@ class LinkedList:
             count += 1
             current = current.next
         return count
+
+    def ssize(self):
+        """Return size of LinkedList O(1)"""
+        return self.length
 
     def search(self, data):
         """Return index of data if data exists in LinkedList, else throws ValueError O(N)"""
@@ -61,6 +67,7 @@ class LinkedList:
                     self.head = current.next
                 else:
                     previous.next = current.next
+                self.length -= 1
                 break
             else:
                 previous = current
@@ -76,6 +83,7 @@ class LinkedList:
             current.next = node
         else:
             self.head = node
+        self.length += 1
 
     def insert(self, data, index):
         """Insert data at index in LinkedList O(N)"""
@@ -93,6 +101,7 @@ class LinkedList:
                 else:
                     node.next = current
                     previous.next = node
+                self.length += 1
                 break
             else:
                 previous = current
@@ -107,11 +116,13 @@ class LinkedList:
             if current.data == node:
                 new_node.next = current.next
                 current.next = new_node
+                self.length += 1
                 break
             else:
                 current = current.next
 
     def insert_before(self, node, data):
+        """Insert data after given node in LinkedList O(N)"""
         new_node = Node(data)
         current = self.head
         previous = None
@@ -123,6 +134,7 @@ class LinkedList:
                 else:
                     new_node.next = current
                     previous.next = new_node
+                self.length += 1
                 break
             else:
                 previous = current
@@ -136,29 +148,15 @@ class LinkedList:
             current = current.next
         return '->'.join(node.data for node in nodes)
 
+    def report(self):
+        current = self.head
+        while current:
+            print(f'''--------------------------------------
+Current Node: {current}
+Next Node: {current.next}
+''')
+            current = current.next
+
 
 if __name__ == '__main__':
-    ll = LinkedList()
-    print(ll.is_empty())
-    print(ll.size())
-    ll.add('Viral')
-    ll.add('Bhavisha')
-    ll.add('Deepika')
-    ll.add('Kareena')
-    ll.add('Emma')
-    ll.append('Aalia')
-    ll.insert('Priyanka', 2)
-    print(ll)
-    print(ll.is_empty())
-    print(ll.size())
-    print(ll.search('Bhavisha'))
-    # # print(ll.search('Hermione'))
-    print(ll.contains('Emma'))
-    print(ll.contains('Hermione'))
-    ll.delete('Kareena')
-    print(ll)
-    ll.delete('Hermione')
-    print(ll)
-    ll.insert_after('Bhavisha', 'Diana')
-    ll.insert_before('Viral', 'Kriti')
-    print(ll)
+    pass

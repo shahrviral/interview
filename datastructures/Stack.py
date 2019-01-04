@@ -22,18 +22,5 @@ class Stack:
 
 
 if __name__ == '__main__':
-    stack = Stack()
-    print(stack.is_empty())
-    print(stack.size())
-    stack.push('v')
-    stack.push('b')
-    stack.push('d')
-    print(stack)
-    print(stack.is_empty())
-    print(stack.size())
-    print(stack.peek())
-    print(stack.pop())
-    print(stack)
-    print(stack.peek())
-    print(stack.size())
+    pass
 
