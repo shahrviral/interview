@@ -8,7 +8,7 @@ class HashTable:
 
     def get(self, key):
         hash = self._hash(key)
-        if self.data[hash]:
+        if self.data[hash] is not None:
             for pair in self.data[hash]:
                 if pair[0] == key:
                     return pair[1]
@@ -19,7 +19,7 @@ class HashTable:
 
         key_value = [key, value]
 
-        if self.data[hash]:
+        if self.data[hash] is not None:
             for pair in self.data[hash]:
                 if pair[0] == key:
                     pair[1] = value
@@ -33,7 +33,7 @@ class HashTable:
     def remove(self, key):
         hash = self._hash(key)
 
-        if self.data[hash]:
+        if self.data[hash] is not None:
             for i in range(len(self.data[hash])):
                 if self.data[hash][i][0] == key:
                     self.data[hash].pop(i)

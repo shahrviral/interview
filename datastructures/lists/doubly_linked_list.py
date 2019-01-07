@@ -21,7 +21,7 @@ class DoublyLinkedList:
     def add(self, data):
         """Add node to beginning of LinkedList O(1)"""
         node = Node(data)
-        if self.head:
+        if self.head is not None:
             self.insert_before_node(self.head, node)
         else:
             self.tail = node
@@ -36,7 +36,7 @@ class DoublyLinkedList:
         """Return index of data if data exists in LinkedList, else throws ValueError O(N)"""
         current = self.head
         position = 0
-        while current:
+        while current is not None:
             if current.data == data:
                 return position
             else:
@@ -47,7 +47,7 @@ class DoublyLinkedList:
     def contains(self, data):
         """Return if data is in LinkedList or not O(N)"""
         current = self.head
-        while current:
+        while current is not None:
             if current.data == data:
                 return True
             current = current.next
@@ -56,14 +56,14 @@ class DoublyLinkedList:
     def delete(self, data):
         """Delete data from LinkedList O(N)"""
         current = self.head
-        while current:
+        while current is not None:
             if current.data == data:
                 current.data = None
-                if current.previous:
+                if current.previous is not None:
                     current.previous.next = current.next
                 else:
                     self.head = current.next
-                if current.next:
+                if current.next is not None:
                     current.next.previous = current.previous
                 else:
                     self.tail = current.previous
@@ -75,7 +75,7 @@ class DoublyLinkedList:
     def append(self, data):
         """Append data to end of LinkedList O(1)"""
         node = Node(data)
-        if self.tail:
+        if self.tail is not None:
             self.insert_after_node(self.tail, node)
         else:
             self.add(node)
@@ -85,7 +85,7 @@ class DoublyLinkedList:
         position = 0
         if index > self.size() - 1:
             raise IndexError('Index not in range of LinkedList')
-        while current:
+        while current is not None:
             if position == index:
                 self.insert_before_node(current, Node(data))
                 break
@@ -96,7 +96,7 @@ class DoublyLinkedList:
     def insert_after(self, node_data, data):
         """Insert data after given node in LinkedList O(N)"""
         current = self.head
-        while current:
+        while current is not None:
             if current.data == node_data:
                 self.insert_after_node(current, Node(data))
                 break
@@ -106,7 +106,7 @@ class DoublyLinkedList:
     def insert_before(self, node_data, data):
         """Insert data after given node in LinkedList O(N)"""
         current = self.head
-        while current:
+        while current is not None:
             if current.data == node_data:
                 self.insert_before_node(current, Node(data))
                 break
@@ -114,7 +114,7 @@ class DoublyLinkedList:
                 current = current.next
 
     def insert_before_node(self, node, new_node):
-        if node.previous:
+        if node.previous is not None:
             node.previous.next = new_node
             new_node.previous = node.previous
             new_node.next = node
@@ -126,7 +126,7 @@ class DoublyLinkedList:
         self.length += 1
 
     def insert_after_node(self, node, new_node):
-        if node.next:
+        if node.next is not None:
             node.next.previous = new_node
             new_node.next = node.next
             new_node.previous = node
@@ -139,14 +139,14 @@ class DoublyLinkedList:
     def __repr__(self):
         nodes = []
         current = self.head
-        while current:
+        while current is not None:
             nodes.append(current)
             current = current.next
         return '<->'.join(node.data for node in nodes)
 
     def report(self):
         current = self.head
-        while current:
+        while current is not None:
             print(f'''--------------------------------------
 Current Node: {current}
 Previous Node: {current.previous}

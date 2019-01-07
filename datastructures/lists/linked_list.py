@@ -26,7 +26,7 @@ class LinkedList:
         """Return size of LinkedList O(N)"""
         count = 0
         current = self.head
-        while current:
+        while current is not None:
             count += 1
             current = current.next
         return count
@@ -39,7 +39,7 @@ class LinkedList:
         """Return index of data if data exists in LinkedList, else throws ValueError O(N)"""
         current = self.head
         position = 0
-        while current:
+        while current is not None:
             if current.data == data:
                 return position
             else:
@@ -50,7 +50,7 @@ class LinkedList:
     def contains(self, data):
         """Return if data is in LinkedList or not O(N)"""
         current = self.head
-        while current:
+        while current is not None:
             if current.data == data:
                 return True
             current = current.next
@@ -60,7 +60,7 @@ class LinkedList:
         """Delete data from LinkedList O(N)"""
         current = self.head
         previous = None
-        while current:
+        while current is not None:
             if current.data == data:
                 current.data = None
                 if not previous:
@@ -77,7 +77,7 @@ class LinkedList:
         """Append data to end of LinkedList O(N)"""
         current = self.head
         node = Node(data)
-        if current:
+        if current is not None:
             while current.next:
                 current = current.next
             current.next = node
@@ -93,7 +93,7 @@ class LinkedList:
         position = 0
         if index > self.size() - 1:
             raise IndexError('Index not in range of LinkedList')
-        while current:
+        while current is not None:
             if position == index:
                 if not previous:
                     node.next = self.head
@@ -112,7 +112,7 @@ class LinkedList:
         """Insert data after given node in LinkedList O(N)"""
         new_node = Node(data)
         current = self.head
-        while current:
+        while current is not None:
             if current.data == node:
                 new_node.next = current.next
                 current.next = new_node
@@ -126,7 +126,7 @@ class LinkedList:
         new_node = Node(data)
         current = self.head
         previous = None
-        while current:
+        while current is not None:
             if current.data == node:
                 if not previous:
                     new_node.next = current
@@ -143,14 +143,14 @@ class LinkedList:
     def __repr__(self):
         nodes = []
         current = self.head
-        while current:
+        while current is not None:
             nodes.append(current)
             current = current.next
         return '->'.join(node.data for node in nodes)
 
     def report(self):
         current = self.head
-        while current:
+        while current is not None:
             print(f'''--------------------------------------
 Current Node: {current}
 Next Node: {current.next}

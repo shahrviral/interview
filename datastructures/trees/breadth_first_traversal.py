@@ -1,21 +1,13 @@
-
-class Node:
-    def __init__(self, data=None):
-        self.data = data
-        self.left = None
-        self.right = None
-
-    def __repr__(self):
-        return self.data
+from binary_search_tree import Node
 
 
 def level_order_traversal(queue, result):
     if queue:
         node = queue.pop(0)
-        if node:
-            if node.left:
+        if node is not None:
+            if node.left is not None:
                 queue.append(node.left)
-            if node.right:
+            if node.right is not None:
                 queue.append(node.right)
             result.append(node)
         result = level_order_traversal(queue, result)
@@ -23,7 +15,6 @@ def level_order_traversal(queue, result):
 
 
 if __name__ == '__main__':
-
     root = Node('A')
     queue = [root]
     root.left = Node('B')

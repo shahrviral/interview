@@ -52,15 +52,15 @@ class BinarySearchTree:
             return max(left_height, right_height)
         return current_height
 
-    def search(self, data):
-        return self._search(self.root, data) if self.root else False
+    def contains(self, data):
+        return self._contains(self.root, data) if self.root else False
 
-    def _search(self, current_node, data):
+    def _contains(self, current_node, data):
         if data == current_node.data: return True
         if data < current_node.data and current_node.left:
-            return self._search(current_node.left, data)
+            return self._contains(current_node.left, data)
         elif data > current_node.data and current_node.right:
-            return self._search(current_node.right, data)
+            return self._contains(current_node.right, data)
         return False
 
     def find(self, data):
@@ -127,14 +127,48 @@ class BinarySearchTree:
 
                 self._delete(successor)
 
-    def print_tree(self):
-        print(self.in_order_traversal(self.root, []))
+    def print_tree(self, traversal='in-order'):
+
+        if traversal == 'in-order':
+            print(self.in_order_traversal(self.root, []))
+        elif traversal == 'pre-order':
+            print(self.pre_order_traversal(self.root, []))
+        elif traversal == 'post-order':
+            print(self.post_order_traversal(self.root, []))
+        elif traversal == 'level-order':
+            print(self.in_order_traversal([self.root], []))
+
+    def pre_order_traversal(self, node, result):
+        if node:
+            result.append(node)
+            result = self.in_order_traversal(node.left, result)
+            result = self.in_order_traversal(node.right, result)
+        return result
 
     def in_order_traversal(self, node, result):
         if node:
             result = self.in_order_traversal(node.left, result)
             result.append(node)
             result = self.in_order_traversal(node.right, result)
+        return result
+
+    def post_order_traversal(self, node, result):
+        if node:
+            result = self.in_order_traversal(node.left, result)
+            result = self.in_order_traversal(node.right, result)
+            result.append(node)
+        return result
+
+    def level_order_traversal(self, queue, result):
+        if queue:
+            node = queue.pop(0)
+            if node is not None:
+                if node.left is not None:
+                    queue.append(node.left)
+                if node.right is not None:
+                    queue.append(node.right)
+                result.append(node)
+            result = self.level_order_traversal(queue, result)
         return result
 
     @staticmethod
@@ -164,22 +198,6 @@ def validate_binary_search_tree(root, min=-sys.maxsize, max=sys.maxsize):
 
 
 if __name__ == '__main__':
-    # bst = BinarySearchTree(None)
-    # bst.insert(35)
-    # bst.insert(28)
-    # bst.insert(22)
-    # bst.insert(17)
-    # bst.insert(24)
-    # bst.insert(44)
-    # bst.insert(30)
-    # bst.insert(58)
-    # bst.insert(6)
-    # bst.insert(60)
-    # bst.insert(20)
-    # bst.insert(50)
-    # bst.print_tree()
-    # print(bst.search(22))
-    # print(bst.search(100))
     bst = BinarySearchTree()
     for i in [50, 30, 40, 20, 70, 60, 80]:
         bst.insert(i)
@@ -187,5 +205,5 @@ if __name__ == '__main__':
     bst.delete(40)
     bst.print_tree()
     print(bst.height())
-    print(bst.search(60))
+    print(bst.contains(60))
     print(validate_binary_search_tree(bst.root))
