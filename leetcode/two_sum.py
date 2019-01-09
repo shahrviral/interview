@@ -10,19 +10,16 @@ arr = [2, 7, 8, 6, 3, 10] n = 11
 """
 
 
-def two_sum(arr, n):
+def two_sum(nums, target):
     complement_map = {}
-    for index, number in enumerate(arr):
-        complement = n - number
+    for index, num in enumerate(nums):
+        complement = target - num
 
         if complement in complement_map:
             return [index, complement_map[complement]]
-        complement_map[number] = index
+        complement_map[num] = index
     return []
 
 
 if __name__ == '__main__':
-    arr = [2, 2, 7, 8, 7, 4, 10]
-    n = 4
-    res = two_sum(arr, n)
-    print(res)
+    print(two_sum([2, 211, 7, 6, 7, 4, 10], 8))
