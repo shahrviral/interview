@@ -2,18 +2,7 @@ from graph import Graph
 
 
 def breadth_first_search(start, id):
-    queue = [start]
-    visited = set()
-    visited.add(start.id)
-    while queue:
-        vertex = queue.pop(0)
-        if vertex.id == id:
-            return True
-        for child_vertex in vertex.connected_to:
-            if child_vertex.id not in visited:
-                queue.append(child_vertex)
-                visited.add(child_vertex.id)
-    return False
+   pass
 
 
 if __name__ == '__main__':

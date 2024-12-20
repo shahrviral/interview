@@ -3,10 +3,7 @@ import sys
 
 class Node:
     def __init__(self, data=None, left=None, right=None, parent=None):
-        self.data = data
-        self.left = left
-        self.right = right
-        self.parent = parent
+        pass
 
     def __repr__(self):
         return str(self.data)
@@ -15,117 +12,38 @@ class Node:
 class BinarySearchTree:
 
     def __init__(self, root=None):
-        self.root = root
-        self.size = 0
+        pass
 
     def insert(self, data):
-        if self.root:
-            self._insert(self.root, data)
-        else:
-            self.root = Node(data)
-        self.size += 1
+        pass
 
     def _insert(self, current_node, data):
-        if data < current_node.data:
-            if current_node.left:
-                self._insert(current_node.left, data)
-            else:
-                current_node.left = Node(data)
-                current_node.left.parent = current_node
-        elif data > current_node.data:
-            if current_node.right:
-                self._insert(current_node.right, data)
-            else:
-                current_node.right = Node(data)
-                current_node.right.parent = current_node
+        pass
         # If same data passed in, don't do anything
 
     def height(self):
-        if self.root:
-            return self._height(self.root, 0)
-        return 0
+        pass
 
     def _height(self, current_node, current_height):
-        if current_node:
-            left_height = self._height(current_node.left, current_height + 1)
-            right_height = self._height(current_node.right, current_height + 1)
-            return max(left_height, right_height)
-        return current_height
+        pass
 
     def contains(self, data):
-        return self._contains(self.root, data) if self.root else False
+        pass
 
     def _contains(self, current_node, data):
-        if data == current_node.data: return True
-        if data < current_node.data and current_node.left:
-            return self._contains(current_node.left, data)
-        elif data > current_node.data and current_node.right:
-            return self._contains(current_node.right, data)
-        return False
+        pass
 
     def find(self, data):
-        if self.root:
-            return self._find(self.root, data)
+        pass
 
     def _find(self, current_node, data):
-        if current_node.data == data:
-            return current_node
-        elif data < current_node.data and current_node.left:
-            return self._find(current_node.left, data)
-        elif data > current_node.data and current_node.right:
-            return self._find(current_node.right, data)
+        pass
 
     def delete(self, data):
-
-        node = self.find(data)
-        self._delete(node)
+        pass
 
     def _delete(self, node):
-
-        if node:
-
-            node_parent = node.parent
-
-            node_children_count = BinarySearchTree.get_number_of_children(node)
-
-            # CASE 1 (node has no children)
-            if node_children_count == 0:
-
-                if node_parent:
-                    # remove reference to node from parent node
-                    if node_parent.left == node:
-                        node_parent.left = None
-                    else:
-                        node_parent.right = None
-                else:
-                    self.root = None
-
-            # CASE 2 (node has either left or right child)
-            if node_children_count == 1:
-
-                # get child node
-                child = node.left if node.left else node.right
-
-                if node_parent:
-                    # replace parent node's reference to deleted node with deleted node's child
-                    if node_parent.left == node:
-                        node_parent.left = child
-                    else:
-                        node_parent.right = child
-                else:
-                    self.root = None
-                # replace child's parent pointer with deleted node's parent pointer
-                child.parent = node_parent
-
-            # CASE 3 (node has 2 children) recursive case
-            if node_children_count == 2:
-                # Get in order successor of the node to be deleted, smallest value greater than node
-                successor = BinarySearchTree.find_min_node(node.right)
-
-                # copy value of successor to node
-                node.data = successor.data
-
-                self._delete(successor)
+        pass
 
     def print_tree(self, traversal='in-order'):
 
@@ -139,62 +57,28 @@ class BinarySearchTree:
             print(self.in_order_traversal([self.root], []))
 
     def pre_order_traversal(self, node, result):
-        if node:
-            result.append(node)
-            result = self.in_order_traversal(node.left, result)
-            result = self.in_order_traversal(node.right, result)
-        return result
+        pass
 
     def in_order_traversal(self, node, result):
-        if node:
-            result = self.in_order_traversal(node.left, result)
-            result.append(node)
-            result = self.in_order_traversal(node.right, result)
-        return result
+        pass
 
     def post_order_traversal(self, node, result):
-        if node:
-            result = self.in_order_traversal(node.left, result)
-            result = self.in_order_traversal(node.right, result)
-            result.append(node)
-        return result
+        pass
 
     def level_order_traversal(self, queue, result):
-        if queue:
-            node = queue.pop(0)
-            if node is not None:
-                if node.left is not None:
-                    queue.append(node.left)
-                if node.right is not None:
-                    queue.append(node.right)
-                result.append(node)
-            result = self.level_order_traversal(queue, result)
-        return result
+        pass
 
     @staticmethod
     def find_min_node(node):
         """ Find in order successor of node"""
-        current = node
-        while current.left:
-            print(current)
-            current = current.left
-        return current
+        pass
 
     @staticmethod
     def get_number_of_children(node):
-        count = 0
-        if node.left: count += 1
-        if node.right: count += 1
-        return count
-
+        pass
 
 def validate_binary_search_tree(root, min=-sys.maxsize, max=sys.maxsize):
-    if root:
-        return min < root.data < max and \
-               validate_binary_search_tree(root.left, min, root.data) and \
-               validate_binary_search_tree(root.right, root.data, max)
-
-    return True
+    pass
 
 
 if __name__ == '__main__':

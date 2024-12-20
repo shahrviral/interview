@@ -28,27 +28,7 @@ Algorithm Overview:
 
 
 def insertion_sort(arr):
-
-    # Assume that the first element in the list is sorted, begin iteration at second element, index 1
-    for current_index in range(1, len(arr)):
-        # current item is the  not sorted item we want to put in the correct place in the sorted array
-        # Everything to the left of this item is sorted, and this item and everything to the right is not sorted
-        current_item = arr[current_index]
-        # pointer to the index where the above item should go, initialized at the current item's current position
-        insert_index = current_index
-        # while your previous index does not go beyond the min index (0)
-        # and the current item is smaller than the previous item
-        while insert_index > 0 and current_item < arr[insert_index - 1]:
-            # Copy the larger item before the current item to the current item's place
-            arr[insert_index] = arr[insert_index - 1]
-            # push your insert pointer back
-            insert_index -= 1
-            # Either your previous pointer will now be 0 in which case you have reached the start of the array
-            # or you reached an item smaller than the current item
-            # This exists the loop
-        # Now you can move the current item to the empty space created by moving the other items forward
-        # and begin the next pass of the sorting algorithm
-        arr[insert_index] = current_item
+    pass
 
 
 if __name__ == '__main__':

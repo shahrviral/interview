@@ -2,27 +2,15 @@ from binary_search_tree import Node
 
 
 def pre_order_traversal(node, result):
-    if node is not None:
-        result.append(node)
-        result = pre_order_traversal(node.left, result)
-        result = pre_order_traversal(node.right, result)
-    return result
+    pass
 
 
 def in_order_traversal(node, result):
-    if node is not None:
-        result = in_order_traversal(node.left, result)
-        result.append(node)
-        result = in_order_traversal(node.right, result)
-    return result
+    pass
 
 
 def post_order_traversal(node, result):
-    if node is not None:
-        result = post_order_traversal(node.left, result)
-        result = post_order_traversal(node.right, result)
-        result.append(node)
-    return result
+    pass
 
 
 if __name__ == '__main__':

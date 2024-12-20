@@ -1,19 +1,15 @@
 class Queue:
     def __init__(self):
-        self.inbox = []
-        self.outbox = []
-
+        pass
+    
     def is_empty(self):
-        return not self.inbox and not self.outbox
+        pass
 
     def enqueue(self, data):
-        self.inbox.append(data)
+        pass
 
     def dequeue(self):
-        if not self.outbox:
-            while self.inbox:
-                self.outbox.append(self.inbox.pop())
-        return self.outbox.pop()
+        pass
 
 
 if __name__ == '__main__':

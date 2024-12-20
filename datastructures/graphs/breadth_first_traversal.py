@@ -2,29 +2,11 @@ from graph import Graph
 
 
 def breadth_first_traversal(start, size):
-    visited = [None] * size
-    queue = [start]
-    visited[start.id] = start.id
-    while queue:
-        vertex = queue.pop(0)
-        for child_vertex in vertex.connected_to:
-            if visited[child_vertex.id] is None:
-                queue.append(child_vertex)
-                visited[child_vertex.id] = child_vertex.id
-    return visited
+    pass
 
 
 def breadth_first_traversal_set(start):
-    visited = set()
-    queue = [start]
-    visited.add(start.id)
-    while queue:
-        vertex = queue.pop(0)
-        for child_vertex in vertex.connected_to:
-            if child_vertex.id not in visited:
-                queue.append(child_vertex)
-                visited.add(child_vertex.id)
-    return visited
+    pass
 
 
 

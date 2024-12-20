@@ -2,18 +2,11 @@ from graph import Graph
 
 
 def depth_first_search(start, id):
-    visited = set()
-    return _depth_first_search(start, id, visited)
+    pass
 
 
 def _depth_first_search(vertex, id, visited):
-    visited.add(vertex.id)
-    if vertex.id == id:
-        return True
-    for child_vertex in vertex.connected_to:
-        if child_vertex.id not in visited:
-            return _depth_first_search(child_vertex, id, visited)
-    return False
+    pass
 
 
 g = Graph()

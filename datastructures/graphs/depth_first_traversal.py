@@ -2,44 +2,26 @@ from graph import Graph
 
 
 def depth_first_traversal_disconnected(graph):
-    visited = [None] * len(graph.vertices)
-    for vertex in graph:
-        if vertex.id not in visited:
-            _depth_first_traversal(vertex, visited)
-    return visited
+    pass
 
 
 def depth_first_traversal(start, size):
-    visited = [None] * size
-    _depth_first_traversal(start, visited)
-    return visited
+    pass
 
 
 def _depth_first_traversal(vertex, visited):
-    visited[vertex.id] = vertex.id
-    for child_vertex in vertex.connected_to:
-        if child_vertex.id not in visited:
-            _depth_first_traversal(child_vertex, visited)
+    pass
 
 
 def depth_first_traversal_set_disconnected(graph):
-    visited = set()
-    for vertex in graph:
-        if vertex.id not in visited:
-            _depth_first_traversal_set(vertex, visited)
-    return visited
+    pass
 
 def depth_first_traversal_set(start):
-    visited = set()
-    _depth_first_traversal_set(start, visited)
-    return visited
+    pass
 
 
 def _depth_first_traversal_set(vertex, visited):
-    visited.add(vertex.id)
-    for child_vertex in vertex.connected_to:
-        if child_vertex.id not in visited:
-            _depth_first_traversal_set(child_vertex, visited)
+    pass
 
 
 g = Graph()
