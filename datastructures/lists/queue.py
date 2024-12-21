@@ -1,13 +1,7 @@
-import os
-
-
-
 class QueueSimple:
     def __init__(self):
         self.length = 0
         self.arr = []
-
-
 
     def is_empty(self):
         return not self.length
